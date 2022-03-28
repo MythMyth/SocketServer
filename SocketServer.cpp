@@ -1,6 +1,10 @@
-#include <iostream>
+#include <unistd.h>
+#include <stdio.h>
 #include <sys/socket.h>
+#include <stdlib.h>
 #include <netinet/in.h>
+#include <string.h>
+#include <iostream>
 #define PORT 8080
 using namespace std;
 
@@ -23,11 +27,11 @@ int main() {
 
     struct sockaddr_in address;
     int addrlen = sizeof(address);
-    address.sin_addr = AF_INET;
+    address.sin_family = AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;
     address.sin_port = htons(PORT);
     //Bind socket to port
-    if( bind(server_fd, (struct socketaddr*)&address, addrlen) < 0) {
+    if( bind(server_fd, (struct sockaddr*)&address, addrlen) < 0) {
         cout << "Bind error \n";
         return 1;
     }

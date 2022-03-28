@@ -1,6 +1,6 @@
 CC=g++
 
-SocketServer: build/SocketServer.o
+build/SocketServer: build/SocketServer.o
 	$(CC) build/SocketServer.o -o build/SocketServer
 
 build/SocketServer.o: SocketServer.cpp
