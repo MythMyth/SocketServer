@@ -37,5 +37,17 @@ int main() {
         return 1;
     }
 
+    new_socket = accept(server_fd, (struct sockaddr*)&address, (socklen_t*)&addrlen);
+    if(new_socket < 0) {
+        cout << "Socket accept failed \n";
+        return 1;
+    }
+    valread = read( new_socket , buffer, 1024);
+    printf("%s\n",buffer );
+    char* hello = "Hello\n";
+    send(new_socket , hello , strlen(hello) , 0 );
+    printf("Hello message sent\n");
+    return 0;
+    
     return 0;
 }
