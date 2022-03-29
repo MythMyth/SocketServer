@@ -9,7 +9,6 @@
 using namespace std;
 
 int main() {
-    std::cout << "Start server\n";
     int server_fd, new_socket, valread;
     int opt = 1;
     char buffer[1024] = {0};
@@ -46,12 +45,12 @@ int main() {
         cout << "Socket accept failed \n";
         return 1;
     }
-    valread = read( new_socket , buffer, 1024);
-    printf("%s\n",buffer );
+    while(1) {
+        valread = read( new_socket , buffer, 1024);
+        printf("%s\n",buffer );
+    }
     char* hello = "Hello\n";
     send(new_socket , hello , strlen(hello) , 0 );
     printf("Hello message sent\n");
-    return 0;
-    
     return 0;
 }
