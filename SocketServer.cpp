@@ -5,6 +5,10 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <iostream>
+
+#include "Client.h"
+#include "ClientListener.h"
+
 #define PORT 8080
 using namespace std;
 
@@ -34,23 +38,24 @@ int main() {
         cout << "Bind error \n";
         return 1;
     }
-
+    cout << "Socket binded\n";
     if(listen(server_fd, 5) < 0) {
         cout << "Listen error \n";
         return 1;
     }
-
+    cout << "Heard\n";
     new_socket = accept(server_fd, (struct sockaddr*)&address, (socklen_t*)&addrlen);
     if(new_socket < 0) {
         cout << "Socket accept failed \n";
         return 1;
     }
+    cout << "Socket accepted\n";
     while(1) {
         valread = read( new_socket , buffer, 1024);
+        if(valread <= 0) break;
+        if(valread < 1024) buffer[valread] = '\0';
         printf("%s\n",buffer );
     }
-    char* hello = "Hello\n";
-    send(new_socket , hello , strlen(hello) , 0 );
-    printf("Hello message sent\n");
+    printf("Bye\n");
     return 0;
 }

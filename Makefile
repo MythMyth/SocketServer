@@ -1,7 +1,14 @@
 CC=g++
 
-build/SocketServer: build/SocketServer.o
-	$(CC) build/SocketServer.o -o build/SocketServer
+SRC =  SocketServer.cpp Client.cpp ClientListener.cpp
+OBJ = $(foreach d, $(SRC), $(addsuffix .o, $(basename $d)))
 
-build/SocketServer.o: SocketServer.cpp
-	$(CC) -c SocketServer.cpp -o build/SocketServer.o
+SocketServer: $(OBJ)
+	$(CC) $(foreach d, $(SRC), $(addprefix build/, $(addsuffix .o, $(basename $d)))) -o build/SocketServer
+
+$(OBJ):
+	$(CC) -c $(addsuffix .cpp, $(basename $@)) -o build/$@
+
+clean: 
+	rm -rf build
+	mkdir build
