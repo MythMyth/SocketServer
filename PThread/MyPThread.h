@@ -1,4 +1,4 @@
-#ifdef __MYPTHREAD__
+#ifndef __MYPTHREAD__
 #define __MYPTHREAD__
 
 #include<pthread.h>

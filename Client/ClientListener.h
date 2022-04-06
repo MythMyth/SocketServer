@@ -8,8 +8,7 @@
 
 using namespace std;
 
-class ClientListener : public MyPThread{
-    map<string, Client*> connected;
+class ClientListener : public MyPThread {
 public:
     ClientListener();
     void run();
