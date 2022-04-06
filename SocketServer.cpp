@@ -6,8 +6,8 @@
 #include <string.h>
 #include <iostream>
 
-#include "Client.h"
-#include "ClientListener.h"
+#include "Client/Client.h"
+#include "Client/ClientListener.h"
 
 #define PORT 8080
 using namespace std;
