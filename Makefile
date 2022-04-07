@@ -1,6 +1,6 @@
 CC=g++
 
-SRC =  SocketServer.cpp Client/Client.cpp Client/ClientListener.cpp PThread/MyPThread.cpp
+SRC =  SocketServer.cpp Client/Client.cpp Client/ClientListener.cpp PThread/MyPThread.cpp Socket/MSocket.cpp
 OBJ = $(foreach d, $(SRC), $(addsuffix .o, $(basename $d)))
 LIB = -pthread
 TARGET = build/SocketServer
