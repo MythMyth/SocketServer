@@ -6,8 +6,8 @@ Client::Client(int id, ClientListener* listener) {
 }
 
 void Client::run() {
-    cout << "New client connected. ID: " << client_id << "\n";
     char buffer[1024+1] = {'\0'};
+    cout << "Client thread started: " << client_id << "\n";
     while(1) {
         int valread = read( client_id , buffer, 1024);
         if(valread <= 0) break;
