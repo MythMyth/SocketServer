@@ -6,8 +6,11 @@
 #include <stdlib.h>
 #include <netinet/in.h>
 #include <stdio.h>
+#include <string.h>
 #include "../PThread/MyPThread.h"
 #include "ClientListener.h"
+
+using namespace std;
 
 class ClientListener;
 class Client : public MyPThread {
@@ -17,7 +20,10 @@ class Client : public MyPThread {
 
     private:
     int client_id;
+    string client_name;
     ClientListener* client_listener;
+
+    void trim(string &s);
 };
 
 #endif
