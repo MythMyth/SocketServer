@@ -6,11 +6,17 @@
 #include <string.h>
 #include <iostream>
 #include "Client/ClientListener.h"
+#include "Debug/Debug.h"
 using namespace std;
 
 #define PORT 8080
 
-int main() {
+int main(int argc, char* argv[]) {
+    if(argc > 1) {
+        LogLevel level = (LogLevel)atoi(argv[1]);
+        Debug::GetInstance()->SetDebugLevel(level);
+    }
+
     int server_fd, new_socket, valread;
     int opt = 1;
     char buffer[1024] = {0};
