@@ -2,7 +2,7 @@
 #define __SINGLETON__
 #include <mutex>
 
-template <class A>
+template <typename A>
 class Singleton {
     public:
     static A* GetInstance() {
@@ -15,8 +15,10 @@ class Singleton {
     }
     private:
     static A *instance;
-    std::mutex m_mutex;
-
+    static std::mutex m_mutex;
 };
+
+template<typename T> T* Singleton<T>::instance = NULL;
+template<typename T> std::mutex Singleton<T>::m_mutex;
 
 #endif

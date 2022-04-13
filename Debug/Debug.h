@@ -2,8 +2,8 @@
 #define __DEBUG__
 
 #include<iostream>
-#include<string.h>
-#include<SingleTon.h>
+#include<stdio.h>
+#include "SingleTon.h"
 
 using namespace std;
 
@@ -25,9 +25,10 @@ class Debug:public Singleton<Debug> {
         debug_level = level;
     }
 
-    void Log(LogLevel level, string line) {
+template<typename ... Types> void Log(LogLevel level, char* format, Types&& ... args) {
         if(level >= debug_level) {
-            cout << line << "\n";
+            printf(format, (args)...);
+            printf("\n");
         }
     }
 

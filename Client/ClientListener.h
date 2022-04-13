@@ -8,6 +8,7 @@
 #include<map>
 #include<string>
 #include "Client.h"
+#include "../Debug/Debug.h"
 #include "../PThread/MyPThread.h"
 
 using namespace std;
