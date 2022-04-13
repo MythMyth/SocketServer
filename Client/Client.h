@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "../PThread/MyPThread.h"
+#include "../Debug/Debug.h"
 #include "ClientListener.h"
 
 using namespace std;
